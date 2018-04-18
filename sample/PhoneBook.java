@@ -24,6 +24,13 @@ public class PhoneBook {
         return phoneBook;
     }
 
+    public void cleanAddAll(List<TelefonEntry> list) {
+        for (TelefonEntry toAdd : list) {
+            if (!toAdd.isNew() && !hasDuplicate(toAdd))
+                phoneBook.add(toAdd);
+        }
+    }
+
     public void addEmptyEntry() {
         for (TelefonEntry e : phoneBook) {
             if (e.isNew())
@@ -39,7 +46,16 @@ public class PhoneBook {
     public void setPhoneBook(List<TelefonEntry> tempList) {
         System.out.println(tempList.toString());
         phoneBook.clear();
-        phoneBook.addAll(tempList);
+        cleanAddAll(tempList);
+    }
+
+    private boolean hasDuplicate(TelefonEntry te) {
+        for (TelefonEntry old : phoneBook) {
+            if (old.equals(te))
+                    return true;
+        }
+
+        return false;
     }
 
 

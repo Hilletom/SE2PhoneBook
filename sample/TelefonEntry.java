@@ -53,4 +53,16 @@ public class TelefonEntry {
     public boolean isNew() {
         return isNew;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o != null && o instanceof TelefonEntry) {
+            TelefonEntry te = (TelefonEntry) o;
+            if (te.firstName.get().equals(this.firstName.get()) && te.lastName.get().equals(this.lastName.get()) && te.number.get().equals(this.number.get()))
+                return true;
+        }
+
+        return false;
+    }
+
 }

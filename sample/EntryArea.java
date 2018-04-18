@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.collections.transformation.SortedList;
 import sample.TelefonEntry;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,14 +15,17 @@ public class EntryArea {
     private final AnchorPane anchorPane = new AnchorPane();
     private final TableView<TelefonEntry> tableView;
 
-    public EntryArea(PhoneBook phoneBook) {
-        ObservableList<TelefonEntry> telefonEntries = phoneBook.getPhoneBook();
+    public EntryArea(PhoneBook phoneBook, SearchArea searchArea) {
+        SortedList<TelefonEntry> telefonEntries = searchArea.getSortedEntries();
+
         tableView = new TableView<>();
         AnchorPane.setLeftAnchor(tableView, 10.0);
         AnchorPane.setRightAnchor(tableView, 10.0);
         AnchorPane.setTopAnchor(tableView, 0.0);
         AnchorPane.setBottomAnchor(tableView, 10.0);
         anchorPane.getChildren().addAll(tableView);
+
+        telefonEntries.comparatorProperty().bind(tableView.comparatorProperty());
 
         Callback<TableColumn<TelefonEntry, String>, TableCell<TelefonEntry, String>> cellFactory = p -> new EditingCell();
 

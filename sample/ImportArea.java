@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -17,7 +18,7 @@ public class ImportArea {
 
 
 
-    public ImportArea(EntryArea entryAreaR, PhoneBook phoneBookL) {
+    public ImportArea(EntryArea entryAreaR, PhoneBook phoneBookR, PhoneBook phoneBookL) {
         final Label labelImport = new Label("Import");
         final Button importOne = new Button("<--");
         final Button importAll = new Button("All");
@@ -42,10 +43,20 @@ public class ImportArea {
         VBox importVBox = new VBox();
         importVBox.setPadding(new Insets(10));
         importVBox.setSpacing(8);
-        AnchorPane.setTopAnchor(importVBox, 50.0);
+        importVBox.setAlignment(Pos.CENTER);
+        AnchorPane.setTopAnchor(importVBox, 130.0);
+        importVBox.setStyle("-fx-border-color: lightgrey;");
+        importVBox.setPadding(new Insets(20));
         importVBox.getChildren().addAll(labelImport, importOne, importAll);
 
         getPane().getChildren().addAll(importVBox);
+
+
+
+
+        importOne.setOnAction(e -> phoneBookL.cleanAddAll(entryAreaR.getSelectedEntries()));
+        importAll.setOnAction(e -> phoneBookL.cleanAddAll(phoneBookR.getPhoneBook()));
+
     }
 
 
