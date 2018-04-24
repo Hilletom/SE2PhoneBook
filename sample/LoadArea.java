@@ -33,7 +33,7 @@ public class LoadArea {
     public LoadArea(EntryArea entryArea, PhoneBook phoneBook, String defaultPhoneBook) {
 
         //final Button loadButton = new Button("Load...");
-        final Button loadButton = GlyphsDude.createIconButton(FontAwesomeIcon.UPLOAD);
+        final Button loadButton = GlyphsDude.createIconButton(FontAwesomeIcon.FOLDER_OPEN);
         final Button saveButton = GlyphsDude.createIconButton(FontAwesomeIcon.SAVE);
 
 

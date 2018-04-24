@@ -1,5 +1,7 @@
 package sample;
 
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 
@@ -9,12 +11,11 @@ public class DeleteArea {
 
 
     public DeleteArea(EntryArea entryArea, PhoneBook phoneBook) {
-        final Button deleteButton = new Button("Delete");
+        final Button deleteButton = GlyphsDude.createIconButton(FontAwesomeIcon.TRASH);
 
         AnchorPane.setTopAnchor(deleteButton, 0.0);
         AnchorPane.setBottomAnchor(deleteButton, 10.0);
-        AnchorPane.setRightAnchor(deleteButton, 10.0);
-        deleteButton.setPrefWidth(70.0);
+        AnchorPane.setRightAnchor(deleteButton, 30.0);
 
         deleteButton.setOnAction(e -> {
             phoneBook.deleteEntries(entryArea.getSelectedEntries());

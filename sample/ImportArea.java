@@ -1,6 +1,8 @@
 package sample;
 
 
+import de.jensd.fx.glyphs.GlyphsDude;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -20,7 +22,7 @@ public class ImportArea {
 
     public ImportArea(EntryArea entryAreaR, PhoneBook phoneBookR, PhoneBook phoneBookL) {
         final Label labelImport = new Label("Import");
-        final Button importOne = new Button("<--");
+        final Button importOne = GlyphsDude.createIconButton(FontAwesomeIcon.LONG_ARROW_LEFT);
         final Button importAll = new Button("All");
 
         //AnchorPane.setLeftAnchor(labelImport, 10.0);
